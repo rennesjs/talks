@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+	<html class="sl-root base export loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Introduction à la Programmation Reactive Fonctionnelle avec Rx.JS: Slides</title>
+		<meta name="description" content="Slides">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="d382943de7413c008dbea6f09f4097f2"><div class="sl-block" data-block-type="shape" style="width: 960px; height: 70px; left: 0px; top: 630px;" data-block-id="ad5f86c6b280a950b9c9696a8da0bbeb"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(221, 121, 39)" data-shape-stretch="true" style="z-index: 11;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 960 70"><rect width="960" height="70" class="shape-element" fill="rgb(221, 121, 39)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 320px; left: 0px; top: 646px;" data-block-id="f2edb577155dc75903c00382d5f4053c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(255, 255, 255); text-align: center;">
+<p>BreizhCamp 2016</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 719px; top: 646px;" data-block-id="67bf03e8603021b0744ac4bb42952766"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(255, 255, 255);">
+<p>#BzhCmp</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="bb325907eb6fefeb116bb3eda639e112" style="min-width: 30px; min-height: 30px; width: 570.690909090909px; height: 190px; left: 195px; top: 20px;"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="826" data-natural-height="275" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463203-bzhcmp-large.png"></div></div>
+<div class="sl-block" data-block-type="text" style="width: 959px; left: 0px; top: 249px; height: auto;" data-block-id="f082e58ac2663095d7baedc7ff9c9969"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 15;" dir="ui">
+<h1>Introduction à la FRP avec RxJS</h1>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="e3817517e7d7406de6fa710c30e4feaf" style="min-width: 30px; min-height: 30px; width: 187px; height: 187px; left: 400px; top: 433px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="150" data-natural-height="150" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/2377184-rxjs-logo.png"></div></div></section><section class="stack"><section data-id="2336d042ee6976e552a1ffabf67723df"><div class="sl-block" data-block-type="text" style="height: auto; width: 320px; left: 0px; top: 646px;" data-block-id="a8e4bb2f87b830d689a28c5d3a11b976"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: center;">
+<p>BreizhCamp 2015</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 720px; top: 646px;" data-block-id="351505316747ef3a445c12c85215c7e8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
+<p>#BzhCmp</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="266e8cc4e36ff62ce3f588bfcd1706fb"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
+<h1>Grégory Houllier</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 280px; height: auto;" data-block-id="6f153281e879ce25782bfc22c10684bb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle" style="z-index: 14;">
+<h2><a href="http://twitter.com/ghoullier" target="_blank">@ghoullier</a></h2>
+</div></div>
+<div class="sl-block intro-end" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 160px; top: 420px;" data-block-id="547de32746e4e97e66d6eebbe149d5f0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>Architecte Web <a href="https://zetapush.com" target="_blank">@zetapush</a>, passionné par le Front-End</p>
+
+<p>Co-Fondateur de <a href="https://twitter.com/RennesJS" target="_blank"><span style="color:rgb(102, 193, 193)">@</span>RennesJS</a></p>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="32c80833f448e3fcfc3f9cdc184774d5"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 160px; left: 160px; top: 50px;" data-block-id="aa4c402be9cb2035844a21c8a18c163e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="height: auto; width: 320px; left: 0px; top: 646px;" data-block-id="2f8948602959f3bef14ed72b81e29274"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: center;">
+<p>BreizhCamp 2015</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 720px; top: 646px;" data-block-id="c6471cf3d369cb03d7e200f517ece8ca"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
+<p>#BzhCmp</p>
+</div></div>
+
+
+<div class="sl-block intro-end" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 460.112px;" data-block-id="aeb64458b1c5826c1dbdf991c206d010"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong>BaaS Temps Réel</strong></p>
+
+<p>(Authentification, Search, File &amp; Data Storage, Push, Email, SMS, Cron, ...)</p>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="5cbda4af735ad4f2d1adefba50ec4eda"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="f5a428b0ebcaca6dcc9f577f9f0a38c2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="a46ef305f1bf5e63a4ba97a90a124584" style="min-width: 30px; min-height: 30px; width: 400px; height: 267.806px; left: 280px; top: 152px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="351" data-natural-height="235" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/2377205-zt_logo_2x.png"></div></div>
+<div class="sl-block intro-end" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 629.763px;" data-block-id="ed0a4644ea7130aab23296cc95fc2f51"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p><a href="https://zetapush.com/" target="_blank">https://</a><a href="https://www.zetapush.com" target="_blank">z</a><a href="https://zetapush.com/" target="_blank">etapush.com</a></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="height: auto; width: 320px; left: 0px; top: 646px;" data-block-id="75b8ea048eb449f8326dbf6b69ad672e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: center;">
+<p>BreizhCamp 2015</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240px; left: 720px; top: 646px;" data-block-id="df4cb9cbef903beae719ef3cc3400cf1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
+<p>#BzhCmp</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="eddec36e6ba5731f338dad4b39835b7c"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;" dir="ui">
+<h3><a href="https://twitter.com/rennesjs" target="_blank">@RennesJS</a></h3>
+
+<h3><a href="http://rennesjs.org" target="_blank">rennesjs.org</a></h3>
+
+<h3><a href="http://www.meetup.com/RennesJS/" target="_blank">meetup.com/RennesJS/</a></h3>
+</div></div>
+
+
+<div class="sl-block" data-block-type="image" style="width: 240px; height: 240px; left: 360px; top: 320px;" data-block-id="be2c4532910adc4ed6599b177b1f30f4"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="512" data-natural-height="512" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463213-rennes-js.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="19068b3c5c5366d7391417b8e7d9d27e"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="3b6f7ea87f88d409657a57a3c0fcbd54" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 560px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>Meetup le dernier jeudi de chaque mois</p>
+
+<p>à SupInfo</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 160px; left: 160px; top: 50px;" data-block-id="434828f0e7b1dfbc0568d8f3d9c92cbf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div></section></section><section class="stack"><section data-id="1c18aec4c4cff023bac35be561034d1b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 350px; height: auto;" data-block-id="a080608873ba2f91fb9cdddf4c1e76db"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Un brin de théorie</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="91a9c46732c4d9c171718b842e5700b7"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 160px; left: 160px; top: 50px;" data-block-id="a676844db2f121b8ba431e3c6c5b0224"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="d934933a8c09c1e325ea7d357ef545e4"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Programmation impérative</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="805a25dcf1a1cbd5514ec5ef2140e8a1"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="3924bad73f89c0752397b0da586b137f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="25fba50b428d169c1544d628aba49d6a" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 81px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Paradigme décrivant<span style="color:rgb(37, 37, 37); text-align:start"> les opérations en séquences d'instructions exécutées par l'ordinateur pour modifier l'état du programme</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 560px; top: 630px;" data-block-id="7853c2b5f7790f9f9e720c06ae7423bd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.7em"><em>Source Wikipedia</em></span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="93f707cc948fec748e414ad9dca0d303"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Programmation évènementielle</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="d26c13963233c83efa97ca1718855f6c"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="1a5edb5d4ce5e72262ac5234fb6e6106"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 490px;" data-block-id="ae6d1db1d0b818f24df1cee07ae7508b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p style="text-align: start;">Paradigme décrivant un programme<span style="text-align:start"><font color="#252525"> par ses réactions aux différents événements qui peuvent se produire, c'est-à-dire des changements d'état de variable</font></span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 560px; top: 630px;" data-block-id="44ce10ce6c6b72d939150b6c53367696"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.7em"><em>Source Wikipedia</em></span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="f125cca6b22609b54c6620602025e32f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Programmation déclarative</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="f6a2b03651182ab4895c2515ea141b45"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="e79e6d1272c86284f6fca05a27d22069"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 490px;" data-block-id="53966fc04ee03d6d9cdc289beedfa185"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Paradigme consistant à<span style="color:rgb(37, 37, 37); text-align:start"> créer des applications sur la base de composants logiciels indépendants du contexte et ne comportant aucun état interne </span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 560px; top: 630px;" data-block-id="9d0b3b08dc304561af70deb4bce83b54"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.7em"><em>Source Wikipedia</em></span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="90a7ee886888d24ab02d9803a1deedf6"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Programmation fonctionelle</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="b4081b1805c70565edf66cc2dde0a8cb"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="6f8560c7c09336100dcd6c812a3326bd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 490px;" data-block-id="bec8a2e6039d5f165b21c65bf25b1ac7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p>Paradigme consistant a représenter un programme comme un ensemble d'évaluation de fonctions mathématique.</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 560px; top: 630px;" data-block-id="e71664f68f6dec871b8d9c28265b05cf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.7em"><em>Source Wikipedia</em></span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2772d12b71d94070afe2b4f8d226d7a1" style="height: auto; min-width: 30px; min-height: 30px; width: 799px; left: 80px; top: 490px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; background-color: rgb(255, 255, 255);" data-fragment-index="0">
+<p><span style="color:rgb(37, 37, 37); text-align:start">Comme le changement d'état et la mutation des données ne peuvent pas être représentés par des évaluations de fonctions</span><span style="color:rgb(37, 37, 37); text-align:start"> la programmation fonctionnelle ne les admet pas</span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="ab423d5cbb31505b32586af983382ecc"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Programmation réactive</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="9833dec5d49cf5ed591407ed1eb6e04f"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="22195561b2614b128604fcb3eb802943"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 490px;" data-block-id="4f15bf7dfcf5e38e5e1a68c50aa1fce3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p>Paradigme consistant a représenter un programme comme un ensemble de flux de données asynchrones émise par des source vers des observeurs.</p>
+</div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="8e1a49d1b033e30ec4e528020926b79f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Reactive Extensions</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="b57c405b9250d253cbbd437b3fb0a6ad"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-block-id="c338a9f231e4e3a525d63f2d349e4ea3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<h3>Projet Open Source initié par Microsoft en 2012</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="d8e7731fad860a470d5374f51141681b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 490px;" data-block-id="364b42b56882116d8f780e5b93082834"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3>Support de nombreux langages: <a href="https://github.com/Reactive-Extensions/Rx.NET" target="_blank">C#</a>, <a href="https://github.com/Reactive-Extensions/RxJS" target="_blank">JavaScript</a>, <a href="https://github.com/ReactiveX/RxRuby" target="_blank">Ruby</a>, <a href="https://github.com/ReactiveX/RxJava" target="_blank">Java</a>
+</h3>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="f1db68c7f2abeaa279e52ee22a96d2ba"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>RxJS</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="33d6ee83db8b0a9b049cb5dbc1c0f75c"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-block-id="eb696acf626660c055481130ee5f4738"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0">
+<h3>"LoDash for event/async"</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="0afe2cc79d62dbf347b681259c186de6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 420px;" data-block-id="8429ff9c0a428bb194381ae7356886d3"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="1">
+<h3>Lib d'outils pour simplifier la manipulation de flux de données asynchrones (Observables)</h3>
+</div></div></section></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="56e709f2d9cc8a4700acd016d5277ce6"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Asynchrone</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="69d461e7e9f6bf004794bdbbf508452f"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-block-id="4885875c4872169f2a782871dcb8317f"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0">
+<h3 style="text-align: left;">Network (Http, WebSocket)</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="845016664255d920ac0deb3712cbbacf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 420px;" data-block-id="78501ccd4aa84e935a62df91a2090a77"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="1">
+<h3 style="text-align: left;">User Interactions (click, scroll, keyboard)</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 490px;" data-block-id="ec1c407e9bc28dbbda1ab07f394a1f5b"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="2">
+<h3 style="text-align:left">Animations</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 560px;" data-block-id="d5ebd9a194970bb5f678535bb0cf316d"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="3">
+<h3 style="text-align:left">Web Workers</h3>
+</div></div></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="80206d89b5b68f047993c843f8906371"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Callback</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="5af4f1561afaa3265fca1d6db7fd2f13"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="c48ef3456b21d2af2d264712783416a4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 719px; height: 350px; left: 121px; top: 280px;" data-block-id="e840f5d18c03a478344a4243452847d7"><div class="sl-block-content" style="z-index: 14;"><pre class="javascript"><code>document.addEventListener('click', (event) =&gt; {
+    // Trigger when user
+})
+
+
+import express from 'express'
+const app = express()
+app.get('/index', (request, response, next) =&gt; {
+    // Trigger when a request income on /index router
+})</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="de659f636dc03cfeca381f108d13b1bf"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Callback</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="71089c03c516ae1124f4714dda6decfc"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="df6e55f9cfbfdadcdf6699987fe3198c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="a363743a514e963a62597f6869c25492" style="min-width: 30px; min-height: 30px; width: 719px; height: 350px; left: 121px; top: 280px;"><div class="sl-block-content" style="z-index: 14;"><pre><code>loadData('users', { id: 1 }, (user) =&gt; {
+    loadData('accounts', { id: user.account }, (account) =&gt; {
+        loadData('billing', { id: account.billing }, (billing) =&gt; {
+            doStuff({ user, account, billing })
+        })
+    })
+})
+</code></pre></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="e48f2530370e8fbbafc4c365581c3a50"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Promise</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="14337d872a5bca122b46ce5d704be063"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="146e454a3732e60aa41c71b5f8fdbc1e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 880px; left: 80px; top: 350px;" data-block-id="d6e3df3f340cf2484a25a621af30c952"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="0">
+<h3 style="text-align:left">Exécution garantie (impossible d'annuler)</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="4ac42659d329b787e1c5b48aefea1a33" style="height: auto; min-width: 30px; min-height: 30px; width: 799px; left: 81px; top: 420px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="1">
+<h3 style="text-align:left">Résolution unique</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="55fee9ca6a2203341b3ae43fb5925b93" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 490px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="2">
+<h3 style="text-align:left">Immutable</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8f83d1540f2e37b49b519bea0d68e995" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 560px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="3">
+<h3 style="text-align: left;"><span style="text-align:left">Cache</span></h3>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="329b08159d179deaa207a7ac9cd2c10d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Promise</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="f5dab576e213042372991ed41df463d4"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="fc0a59c691f796ebe9c26ad180f9cf58"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 719px; height: 350px; left: 121px; top: 280px;" data-block-id="a2c32c310f3782df19e5e8024564c2d8"><div class="sl-block-content" style="z-index: 14;"><pre><code>loadData('users', { id: 1 })
+    .then((user) =&gt; loadData('accounts', user.accountId))
+    .then((account) =&gt; loadData('billing', account.billingId))
+    .then((billing) =&gt; doStuff(billing))</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="dd082cdd011682954878e37f72814ff0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Promise</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="8bb5254699c230dddc9bf2ac3887054c"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-block-id="dd087fbe35cd34b3b08fb049152c0f05"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<h3 style="text-align:left">
+<span style="color:#008000">Network</span> (<span style="color:#008000">Http</span>, <span style="color:#FF0000"><s>WebSocket</s></span>)</h3>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 160px; left: 160px; top: 50px;" data-block-id="f3b1aa99da5b97fda6dd1505f65bce52"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 420px;" data-block-id="94d6d6af98e8fd88ac6522d4ec64f47f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left"><span style="color:#FF0000"><s>User Interactions (click, scroll, keyboard)</s></span></h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 490px;" data-block-id="743f4734126153e5528e6c72e4eda2f9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<h3 style="text-align:left"><span style="color:#FF0000"><s>Animations</s></span></h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 560px;" data-block-id="6d57ae80367324131ffc4fd7a95e982a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<h3 style="text-align:left"><span style="color:#FF0000"><s>Web Workers</s></span></h3>
+</div></div></section></section><section data-id="2e3994bc3bc25b071dd4ad88afb14ad2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="fcd663596284db180c09ef193e986bc2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Quelques liens</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="3ca7096c87959456618f010d55881d84"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="83f499b225d52a5e6ad136d909989264" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 160px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(221, 121, 39);">
+<p style="text-align:justify"><a href="https://github.com/Reactive-Extensions/RxJS" target="_blank">https://github.com/Reactive-Extensions/RxJS</a></p>
+
+<p style="text-align:justify"><a href="http://rxmarbles.com/" target="_blank">http://rxmarbles.com/</a></p>
+
+<p style="text-align:justify"><a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754" target="_blank">https://gist.github.com/staltz/868e7e9bc2a7b8c1f754</a></p>
+
+<p style="text-align:justify"><a href="http://www.sitepoint.com/functional-reactive-programming-rxjs/" target="_blank">http://sitepoint.com/functional-reactive-programming-rxjs/</a></p>
+
+<p style="text-align:justify"><a href="https://medium.com/@chetcorcos/functional-programming-for-javascript-people-1915d8775504#.j41hfaiwq" target="_blank">https://medium.com/@chetcorcos/functional-programming-for-javascript-people-1915d8775504</a></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 160px; left: 160px; top: 50px;" data-block-id="56466fef6070a697802e37a3896b7a56"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div></section><section data-id="e06bf8deb0c42122540e216e331c4bde"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="07045a20611f5bd322056304932fad36"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Questions?</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 91px; height: 91px; left: 35px; top: 25px;" data-block-id="4c9e0551ebb65c210b44ea5e5c5e68b7"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="159" data-natural-height="159" style="" data-src="introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs/1463221-bzhcmp-small.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 160px; left: 160px; top: 50px;" data-block-id="6a3ddc9dd72f826d89eecbce925bea0d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(221, 121, 39);">
+<p style="text-align: left;"><strong><span style="font-size:32px">#BzhCmp</span></strong></p>
+</div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":643343,"slug":"introduction-a-la-programmation-reactive-fonctionnelle-avec-rxjs","title":"Introduction à la Programmation Reactive Fonctionnelle avec Rx.JS","description":"","visibility":"self","published_at":"2015-04-07T07:05:57.690Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/65ee7a801839cedcf894e7999bfd71ad/thumb.jpg","view_count":0,"user":{"id":74970,"username":"gregoryhoullier","name":"Gregory Houllier","description":"","thumbnail_url":"https://lh5.googleusercontent.com/-yMHGhdNyDoU/AAAAAAAAAAI/AAAAAAAAAAA/Axq3krMfJZQ/photo.jpg","private_thumbnail_url":"https://lh5.googleusercontent.com/-yMHGhdNyDoU/AAAAAAAAAAI/AAAAAAAAAAA/Axq3krMfJZQ/photo.jpg","pro":true,"enterprise":false,"enterprise_manager":false,"settings":{"id":75941,"present_controls":true,"present_upsizing":true,"present_notes":true},"registered":true},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"notes":{"797defc49c9f93470acd350e10c239f6":"Un nouvelle syntaxe pour déclarer les fonctions qui se passe du mot clés functions","2c643ccc0d6bfc27148adaa0fe4ce196":"backtick au lieu de quote"}}};
+			SLConfig.current_user = {
+				name: "Gregory Houllier",
+				username: "gregoryhoullier",
+				pro: true
+			};
+		</script>
+
+		<script src="lib/head.min.js"></script>
+		<script src="lib/reveal.min.js"></script>
+		<script>
+			// Make Slides speaker notes available in the reveal.js speaker view
+			if( SLConfig.deck.notes ) {
+				[].forEach.call( document.querySelectorAll( '.reveal .slides section' ), function( slide ) {
+
+					var value = SLConfig.deck.notes[ slide.getAttribute( 'data-id' ) ];
+					if( value && typeof value === 'string' ) {
+						slide.setAttribute( 'data-notes', value );
+					}
+
+				} );
+			}
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+				showNotes: SLConfig.deck.share_notes,
+				slideNumber: SLConfig.deck.slide_number,
+
+				autoSlide: SLConfig.deck.auto_slide_interval || 0,
+				autoSlideStoppable: true,
+
+				rolling_links: SLConfig.deck.rolling_links || true,
+				center: SLConfig.deck.center || false,
+				loop: SLConfig.deck.should_loop || false,
+				rtl: SLConfig.deck.rtl || false,
+
+				transition: SLConfig.deck.transition,
+				backgroundTransition: SLConfig.deck.background_transition,
+
+				maxScale: 2,
+
+				dependencies: [
+					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+		
+
+	</body>
+</html>
