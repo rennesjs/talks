@@ -29,7 +29,7 @@ https://guides.github.com/features/mastering-markdown/
 [ ] Intermédiaire
 [ ] Avancé
 
-**Avez-vous déja présenté ce ?:**
+**Avez-vous déja présenté ce talk?:**
 [ ] Oui => Merci d'ajouter un lien vers la vidéo/slides si possible
 [ ] Non
 
