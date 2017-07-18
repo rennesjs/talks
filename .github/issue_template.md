@@ -1,7 +1,7 @@
 <!--
 MERCI DE REMPLIR L'ENSEMBLE DU TEMPLATE
 
-Si vous ave des difficultés à remplir ce template, vous pouvez vous référer à cet article sur l'utilisation du markdown avec Github:
+Si vous avez des difficultés à remplir ce template, vous pouvez vous référer à cet article sur l'utilisation du markdown avec Github:
 https://guides.github.com/features/mastering-markdown/
 -->
 
